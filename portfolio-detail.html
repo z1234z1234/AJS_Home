@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -273,3 +274,280 @@
 
 
 
+=======
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="googlebot" content="noindex, nofollow">
+    <title>포트폴리오 상세 | 개인 웹사이트</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        .detail-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 120px 0 60px;
+            text-align: center;
+        }
+
+        .detail-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .detail-header p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 90px;
+            left: 20px;
+            z-index: 1000;
+            background: white;
+            color: var(--primary-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 500;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+
+        .back-button:hover {
+            transform: translateX(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .detail-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 20px;
+        }
+
+        .detail-section {
+            margin-bottom: 4rem;
+        }
+
+        .detail-section h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .media-item {
+            background: var(--bg-white);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+
+        .media-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .media-item img,
+        .media-item video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .media-item video {
+            background: #000;
+        }
+
+        .media-caption {
+            padding: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .media-caption h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .media-caption p {
+            margin: 0;
+        }
+
+        .media-content-image {
+            width: 100%;
+            padding: 0 1.5rem 1.5rem 1.5rem;
+        }
+
+        .media-content-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 0.5rem;
+        }
+
+        .full-width-media {
+            width: 100%;
+            margin: 2rem 0;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .full-width-media img,
+        .full-width-media video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .text-content {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .detail-header h1 {
+                font-size: 2rem;
+            }
+
+            .back-button {
+                position: relative;
+                top: auto;
+                left: auto;
+                margin: 1rem 20px;
+                display: inline-block;
+            }
+
+            .media-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-button">← 뒤로가기</a>
+
+    <div class="detail-header">
+        <div class="container">
+            <h1 id="projectTitle">프로젝트 제목</h1>
+            <p id="projectSubtitle">프로젝트 설명</p>
+        </div>
+    </div>
+
+    <div class="detail-content">
+        <!-- 프로젝트 개요 섹션 -->
+        <section class="detail-section">
+            <h2>프로젝트 개요</h2>
+            <div class="text-content" id="overviewContent">
+                <p> UnrealEngine5로 제작한 저사양 기기 타겟의 게임입니다. InGame, Cinema로 나누어 정리했으니 참고 부탁드립니다. </p>
+            </div>
+        </section>
+
+        <!-- 이미지/영상 섹션 1 -->
+        <section class="detail-section">
+            <h2>InGameFX</h2>
+            <div class="media-grid">
+                <div class="media-item">
+                    <video controls>
+                        <source src="resource/portfolio/ingame-fx1.mp4.mov" type="video/mp4">
+                        비디오를 재생할 수 없습니다.
+                    </video>
+                    <div class="media-caption">
+                        <h3>Work</h3>
+                        <p>인게임 FX 입니다. 클래스, 몬스터, BM, UI등 다양한 FX를 제작했습니다. </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 이미지/영상 섹션 2 -->
+        <section class="detail-section">
+            <h2>CinemaFX</h2>
+            <div class="media-grid">
+                <div class="media-item">
+                    <video controls>
+                        <source src="resource/portfolio/detail-video1.mp4.mov" type="video/mp4">
+                        비디오를 재생할 수 없습니다.
+                    </video>
+                    <div class="media-caption">
+                        <h3>Cinema</h3>
+                        <p>Cinema FX 입니다. 후디니 VAT, 나이아가라 플루이드, 블렌더, 스크래치패드 등을 통해 다양한 방식으로 제작하였습니다. </p>
+                    </div>
+                </div>
+                <div class="media-item">
+                    <img src="resource/portfolio/detail3.jpg" alt="상세 이미지 3" onerror="this.style.display='none'">
+                    <div class="media-caption">
+                        <h3>후디니 활용 이미지</h3>
+                    </div>
+                    <div class="media-content-image">
+                        <img src="resource/portfolio/cinema-img1.jpg" alt="CinemaFX 이미지 1" onerror="this.style.display='none'">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 포트폴리오. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // URL 파라미터에서 프로젝트 정보 가져오기
+        const urlParams = new URLSearchParams(window.location.search);
+        const project = urlParams.get('project');
+
+        // 프로젝트별 정보 설정
+        const projectData = {
+            'dndm': {
+                title: 'DNDM',
+                subtitle: '모바일, 저사양 국가 타겟의 게임입니다.',
+                overview: 'UnrealEngine5로 제작한 저사양 기기 타겟의 게임입니다. InGame, Cinema로 나누어 정리했으니 참고 부탁드립니다.'
+            },
+            'rnd': {
+                title: 'R&D',
+                subtitle: '제가 학습한 내용, R&D한 내용입니다.',
+                overview: 'R&D 프로젝트에 대한 상세한 설명을 여기에 작성하세요.'
+            },
+            'future': {
+                title: '???',
+                subtitle: '밝은 미래를 찾아가고 싶다.',
+                overview: '미래 프로젝트에 대한 설명을 여기에 작성하세요.'
+            }
+        };
+
+        if (project && projectData[project]) {
+            const data = projectData[project];
+            document.getElementById('projectTitle').textContent = data.title;
+            document.getElementById('projectSubtitle').textContent = data.subtitle;
+            document.getElementById('overviewContent').innerHTML = `<p>${data.overview}</p>`;
+        }
+    </script>
+</body>
+</html>
+
+
+
+>>>>>>> c2a8f8e4991b1ec3a2ac7dd656c46bc622d056ca
