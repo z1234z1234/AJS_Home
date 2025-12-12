@@ -294,17 +294,16 @@
                 
                 // source 태그 제거하고 직접 src 설정
                 video.innerHTML = '';
-                video.src = movPath;
                 
-                video.addEventListener('error', function() {
-                    console.log('MOV 파일 로드 실패, MP4 시도:', movPath);
-                    // mov 실패 시 mp4 시도
-                    video.src = mp4Path;
-                    video.load();
-                    
-                    // mp4도 실패하면 섹션 숨기기 (첫 번째 비디오 제외)
-                    video.addEventListener('error', function() {
-                        console.log('MP4 파일도 로드 실패:', mp4Path);
+                // 확장자 배열
+                const extensions = ['mov', 'mp4'];
+                let currentIndex = 0;
+                
+                // 재귀적으로 확장자를 시도하는 함수
+                function tryNextExtension() {
+                    if (currentIndex >= extensions.length) {
+                        // 모든 확장자 실패
+                        console.log('비디오를 찾을 수 없습니다:', basePath);
                         if (videoNumber > 1) {
                             const section = video.closest('.detail-section');
                             if (section) {
@@ -314,10 +313,28 @@
                             // 첫 번째 비디오도 실패하면 에러 메시지 표시
                             video.innerHTML = '비디오를 재생할 수 없습니다.';
                         }
-                    }, { once: true });
-                }, { once: true });
+                        return;
+                    }
+                    
+                    const testPath = basePath + '.' + extensions[currentIndex];
+                    console.log('비디오 로드 시도:', testPath);
+                    
+                    // 에러 핸들러를 한 번만 추가
+                    const errorHandler = function() {
+                        console.log('비디오 로드 실패:', testPath);
+                        currentIndex++;
+                        // 기존 에러 핸들러 제거 후 다음 확장자 시도
+                        video.removeEventListener('error', errorHandler);
+                        tryNextExtension();
+                    };
+                    
+                    video.addEventListener('error', errorHandler, { once: true });
+                    video.src = testPath;
+                    video.load();
+                }
                 
-                video.load();
+                // 첫 번째 확장자부터 시도
+                tryNextExtension();
             });
         });
     </script>

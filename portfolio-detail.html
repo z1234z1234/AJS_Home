@@ -191,7 +191,7 @@
             <div class="media-grid">
                 <div class="media-item">
                     <video controls>
-                        <source src="resource/portfolio/ingame-fx1.mp4.mov" type="video/mp4">
+                        <source src="resource/portfolio/ingame-fx1" type="video/mp4">
                         비디오를 재생할 수 없습니다.
                     </video>
                     <div class="media-caption">
@@ -208,7 +208,7 @@
             <div class="media-grid">
                 <div class="media-item">
                     <video controls>
-                        <source src="resource/portfolio/detail-video1.mp4.mov" type="video/mp4">
+                        <source src="resource/portfolio/detail-video1" type="video/mp4">
                         비디오를 재생할 수 없습니다.
                     </video>
                     <div class="media-caption">
@@ -267,6 +267,60 @@
             document.getElementById('projectSubtitle').textContent = data.subtitle;
             document.getElementById('overviewContent').innerHTML = `<p>${data.overview}</p>`;
         }
+
+        // 비디오 여러 확장자 지원 (mov, mp4)
+        function loadVideoWithFallback(video) {
+            const source = video.querySelector('source');
+            if (!source) return;
+            
+            const src = source.getAttribute('src');
+            if (!src) return;
+            
+            // 확장자 제거 (이미 제거되어 있을 수도 있음)
+            const basePath = src.replace(/\.(mp4|mov)$/i, '');
+            const extensions = ['mov', 'mp4'];
+            let currentIndex = 0;
+
+            function tryNextExtension() {
+                if (currentIndex >= extensions.length) {
+                    console.log('비디오를 찾을 수 없습니다:', basePath);
+                    return;
+                }
+
+                const testPath = basePath + '.' + extensions[currentIndex];
+                
+                // source 태그 제거하고 직접 src 설정
+                video.innerHTML = '';
+                video.src = testPath;
+                
+                video.addEventListener('error', function() {
+                    console.log('비디오 로드 실패:', testPath);
+                    // 다음 확장자 시도
+                    currentIndex++;
+                    if (currentIndex < extensions.length) {
+                        tryNextExtension();
+                    } else {
+                        video.innerHTML = '비디오를 재생할 수 없습니다.';
+                    }
+                }, { once: true });
+                
+                video.addEventListener('loadedmetadata', function() {
+                    console.log('비디오 파일 찾음:', testPath);
+                    // 성공적으로 로드됨
+                }, { once: true });
+                
+                video.load();
+            }
+
+            tryNextExtension();
+        }
+
+        // 페이지 로드 시 모든 비디오에 대해 확장자 체크
+        window.addEventListener('load', () => {
+            document.querySelectorAll('video').forEach(video => {
+                loadVideoWithFallback(video);
+            });
+        });
     </script>
 </body>
 </html>
