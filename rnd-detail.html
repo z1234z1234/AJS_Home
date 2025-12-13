@@ -748,7 +748,7 @@ fluid - lookup texture를 항상 포함해야하며 가장 오류가 많다. pol
             <!-- R&D 항목 16 -->
             <div class="accordion-item">
                 <div class="accordion-header">
-                    <h3>R&D 항목 16</h3>
+                    <h3>Stencil 02</h3>
                     <span class="accordion-icon">▼</span>
                 </div>
                 <div class="accordion-content">
@@ -773,7 +773,11 @@ fluid - lookup texture를 항상 포함해야하며 가장 오류가 많다. pol
                         </div>
                     </div>
                     <div class="text-content-area">
-                        <p>여기에 내용을 작성하세요.</p>
+                        <p>영상은 FX에만 적용되는 PostProcess를 통해 실사, 반실사의 FX를 stylized로 변환하는 과정임
+PostProcessmaterial에서 CustomStencil을 활용하여 Transluscent의 Depth와 연동 및 Stencil 마스크를 생성 하도록 설정 및 stencil마스크영역을 그릴 특정 번호를 지정
+해당 FX의 Material에서 allow custom depth writes를 활성화
+나이아가라에서 PP에서 지정한 Stencil 번호을 입력하면 해당하는 나이아가라 FX에만 PP 적용이 가능함
+                        </p>
                     </div>
                 </div>
             </div>
