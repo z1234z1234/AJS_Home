@@ -369,6 +369,50 @@ section {
     transform: translateY(-2px);
 }
 
+.tech-document {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: var(--bg-light);
+    border-radius: 0.75rem;
+    border: 1px solid var(--border-color);
+}
+
+.tech-document h4 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+}
+
+.tech-document p {
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.pdf-link {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: var(--transition);
+    box-shadow: var(--shadow-md);
+}
+
+.pdf-link:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.pdf-link span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
 .about-stats {
     display: flex;
     flex-direction: column;

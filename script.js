@@ -167,5 +167,19 @@ window.addEventListener('load', () => {
     if (heroImage) {
         heroImage.style.animation = 'fadeInRight 0.8s ease';
     }
+
+    // 기술서 PDF 링크 처리
+    const techDocumentLink = document.getElementById('techDocumentLink');
+    if (techDocumentLink) {
+        techDocumentLink.addEventListener('click', function(e) {
+            // PDF 파일이 새 창에서 열리도록 (target="_blank"로 이미 설정됨)
+            // 추가로 PDF 뷰어에서 열리도록 처리
+            const pdfUrl = this.getAttribute('href');
+            if (pdfUrl) {
+                // 브라우저가 자동으로 PDF를 열도록 함
+                window.open(pdfUrl, '_blank');
+            }
+        });
+    }
 });
 
