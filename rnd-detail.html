@@ -134,6 +134,10 @@
             grid-column: 1 / -1;
         }
 
+        .media-container > .video-container {
+            grid-column: auto;
+        }
+
         .video-container video {
             width: 100%;
             height: auto;
@@ -754,11 +758,19 @@ fluid - lookup texture를 항상 포함해야하며 가장 오류가 많다. pol
                 <div class="accordion-content">
                     <div class="media-section">
                         <h4>영상</h4>
-                        <div class="video-container">
-                            <video controls>
-                                <source src="resource/rnd/rnd16-video.mp4" type="video/mp4">
-                                비디오를 재생할 수 없습니다.
-                            </video>
+                        <div class="media-container">
+                            <div class="video-container">
+                                <video controls>
+                                    <source src="resource/rnd/rnd16-video1.mp4" type="video/mp4">
+                                    비디오를 재생할 수 없습니다.
+                                </video>
+                            </div>
+                            <div class="video-container">
+                                <video controls>
+                                    <source src="resource/rnd/rnd16-video2.mp4" type="video/mp4">
+                                    비디오를 재생할 수 없습니다.
+                                </video>
+                            </div>
                         </div>
                     </div>
                     <div class="media-section">
