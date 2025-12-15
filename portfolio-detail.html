@@ -353,7 +353,7 @@
                                 <img src="resource/portfolio/Cinema-img1.jpg" alt="CinemaFX 이미지 1" onerror="this.style.display='none'">
                             </div>
                             <div class="gallery-item" data-image="2">
-                                <img src="resource/portfolio/Cinema-img2.jpg" alt="CinemaFX 이미지 2" onerror="this.style.display='none'">
+                                <img data-src="resource/portfolio/Cinema-img2" alt="CinemaFX 이미지 2">
                             </div>
                             <div class="gallery-item" data-image="3">
                                 <img src="resource/portfolio/Cinema-img3.jpg" alt="CinemaFX 이미지 3" onerror="this.style.display='none'">
@@ -477,14 +477,68 @@
             tryNextExtension();
         }
 
+        // 이미지 여러 확장자 지원 (jpg, png)
+        function loadImageWithFallback(img) {
+            const dataSrc = img.getAttribute('data-src');
+            if (!dataSrc) {
+                // data-src가 없으면 기존 src 사용
+                const src = img.getAttribute('src');
+                if (!src) {
+                    img.style.display = 'none';
+                    return;
+                }
+                const basePath = src.replace(/\.(jpg|jpeg|png|gif)$/i, '');
+                loadImage(img, basePath);
+                return;
+            }
+            
+            loadImage(img, dataSrc);
+        }
+
+        function loadImage(img, basePath) {
+            const extensions = ['jpg', 'png', 'jpeg'];
+            let currentIndex = 0;
+
+            function tryNextExtension() {
+                if (currentIndex >= extensions.length) {
+                    img.style.display = 'none';
+                    const galleryItem = img.closest('.gallery-item');
+                    if (galleryItem) {
+                        galleryItem.style.display = 'none';
+                    }
+                    return;
+                }
+
+                const testImg = new Image();
+                testImg.onload = function() {
+                    img.src = basePath + '.' + extensions[currentIndex];
+                    img.onerror = null; // 에러 핸들러 제거
+                };
+                testImg.onerror = function() {
+                    currentIndex++;
+                    tryNextExtension();
+                };
+                testImg.src = basePath + '.' + extensions[currentIndex];
+            }
+
+            tryNextExtension();
+        }
+
         // 페이지 로드 시 모든 비디오에 대해 확장자 체크
         window.addEventListener('load', () => {
             document.querySelectorAll('video').forEach(video => {
                 loadVideoWithFallback(video);
             });
 
-            // 이미지 갤러리 클릭 이벤트
-            setupImageGallery();
+            // 이미지 갤러리 이미지 로드
+            document.querySelectorAll('.gallery-item img[data-src]').forEach(img => {
+                loadImageWithFallback(img);
+            });
+
+            // 이미지 갤러리 클릭 이벤트 (약간의 지연 후 설정)
+            setTimeout(() => {
+                setupImageGallery();
+            }, 500);
         });
 
         // 이미지 갤러리 확대 기능
