@@ -908,6 +908,9 @@ unreal홈페이지에 vdb관련 내용이 많다 참고하자. 배경쪽에 anim
                             <div class="image-container">
                                 <img data-src="resource/rnd/rnd19-img1" alt="R&D 이미지 1">
                             </div>
+                            <div class="image-container">
+                                <img data-src="resource/rnd/rnd19-img2" alt="R&D 이미지 2">
+                            </div>
                         </div>
                     </div>
                     <div class="text-content-area">
@@ -918,6 +921,8 @@ Scenetexture노드를 이용하여 Stencil Value 지정 및 알파로 사용
 홀로그램 효과의 어울리는 각종 기능 추가 및 그에 따른 Stencil Mask 분리
 
 이후 플레이어 캐릭터가 가까이 갈때 facing에 의해 영향을 받는 부분 Depth를 사용하여 분리
+
+활용예시 방안으로 메시에 직접 material작업을 통해 이미시브나 혹은 FX를 표현하는 경우를 대체해도 괜찮을 것같다. 단순 톤 변화 부터 Wave, decal까지도 표현할 가능성이 높다.
                         </p>
                     </div>
                 </div>
@@ -986,7 +991,7 @@ Scenetexture노드를 이용하여 Stencil Value 지정 및 알파로 사용
             });
         });
 
-        // 이미지 여러 확장자 지원 (jpg, png, gif)
+        // 이미지 여러 확장자 지원 (jpg, png, gif, webp)
         function loadImageWithFallback(img) {
             const dataSrc = img.getAttribute('data-src');
             if (!dataSrc) {
@@ -996,7 +1001,7 @@ Scenetexture노드를 이용하여 Stencil Value 지정 및 알파로 사용
                     img.style.display = 'none';
                     return;
                 }
-                const basePath = src.replace(/\.(jpg|jpeg|png|gif)$/i, '');
+                const basePath = src.replace(/\.(jpg|jpeg|png|gif|webp)$/i, '');
                 loadImage(img, basePath);
                 return;
             }
@@ -1005,7 +1010,7 @@ Scenetexture노드를 이용하여 Stencil Value 지정 및 알파로 사용
         }
 
         function loadImage(img, basePath) {
-            const extensions = ['jpg', 'png', 'gif'];
+            const extensions = ['jpg', 'png', 'gif', 'webp'];
             let currentIndex = 0;
 
             function tryNextExtension() {
