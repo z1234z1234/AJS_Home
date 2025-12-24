@@ -881,12 +881,44 @@ unreal홈페이지에 vdb관련 내용이 많다 참고하자. 배경쪽에 anim
             <!-- R&D 항목 19 -->
             <div class="accordion-item">
                 <div class="accordion-header">
-                    <h3>R&D 항목 19</h3>
+                    <h3>Stencil 03 - hologram</h3>
                     <span class="accordion-icon">▼</span>
                 </div>
                 <div class="accordion-content">
+                    <div class="media-section">
+                        <h4>영상</h4>
+                        <div class="media-container">
+                            <div class="video-container">
+                                <video controls>
+                                    <source src="resource/rnd/rnd19-video1.mp4" type="video/mp4">
+                                    비디오를 재생할 수 없습니다.
+                                </video>
+                            </div>
+                            <div class="video-container">
+                                <video controls>
+                                    <source src="resource/rnd/rnd19-video2.mp4" type="video/mp4">
+                                    비디오를 재생할 수 없습니다.
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="media-section">
+                        <h4>이미지</h4>
+                        <div class="media-container">
+                            <div class="image-container">
+                                <img data-src="resource/rnd/rnd19-img1" alt="R&D 이미지 1">
+                            </div>
+                        </div>
+                    </div>
                     <div class="text-content-area">
-                        <p>추가 정리 예정입니다.</p>
+                        <p>stencil을 이용한 홀로그램 제작 단순 메시에 적용하는 머티리얼이 아닌 Niagara의 burst로 뿌린 파티클에 적용하여 불투명, 반투명에 적용되는 홀로그램 효과용 머티리얼 제작
+
+Scenetexture노드를 이용하여 Stencil Value 지정 및 알파로 사용
+
+홀로그램 효과의 어울리는 각종 기능 추가 및 그에 따른 Stencil Mask 분리
+
+이후 플레이어 캐릭터가 가까이 갈때 facing에 의해 영향을 받는 부분 Depth를 사용하여 분리
+                        </p>
                     </div>
                 </div>
             </div>
