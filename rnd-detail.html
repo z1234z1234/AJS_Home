@@ -931,7 +931,7 @@ Scenetexture노드를 이용하여 Stencil Value 지정 및 알파로 사용
             <!-- R&D 항목 20 -->
             <div class="accordion-item">
                 <div class="accordion-header">
-                    <h3>R&D 항목 20</h3>
+                    <h3>FluidDissolve</h3>
                     <span class="accordion-icon">▼</span>
                 </div>
                 <div class="accordion-content">
@@ -939,7 +939,7 @@ Scenetexture노드를 이용하여 Stencil Value 지정 및 알파로 사용
                         <h4>영상</h4>
                         <div class="video-container">
                             <video controls>
-                                <source src="resource/rnd/rnd20-video.mp4" type="video/mp4">
+                                <source src="resource/rnd/rnd20-video1.mp4" type="video/mp4">
                                 비디오를 재생할 수 없습니다.
                             </video>
                         </div>
@@ -956,7 +956,38 @@ Scenetexture노드를 이용하여 Stencil Value 지정 및 알파로 사용
                         </div>
                     </div>
                     <div class="text-content-area">
-                        <p>여기에 내용을 작성하세요.</p>
+                        <p>exec to index = execution index 
+
+각 엑셀별로 인덱싱(번호화) Index X, Index Y 는 각 엑셀별로 X,Y의 번호임 즉 4*4 기준으로는
+
+X = 0,1,2,3   /   Y = 0,1,2,3 이되는거임.
+
+exec to unit = UV
+
+Decode노드의 screenUV입력핀에 둘다 입력시 작동
+
+UV화 (-0.5 ~ 0.5)로 
+
+파라미터화가 가능하다 이번엔 미사용
+
+Grid 2d Collection이란 
+
+Render target과 유사하나 실시간의 정보만 얻는 것과 달리
+
+Previous를 읽고 Current에 적는  구조임. 즉 2D 격자형 임시, 더미 데이터 모음 노드
+
+구성 차이로는 RT는 RGBA의 정보만 활용함
+
+Grid2dCollection은 Grid를 구성하는 Index, UV(Unit) ,vector, float 등등 
+
+우리가 추가 가능한 속성값들을 임시데이터로 저장하는 모듈이다.
+
+
+
+위의 Fx는 파티클 1개를 RT를 포함한 머티리얼로 유지시켜놓는 방식으로 제작.
+
+초기에는 아무 색상없이 존재하다가 시간에 따라 Scenecolor의 color를 입력하여 변경되도록 제작한 것임. Alpha는 Stencil로 지정한 Mask영역이다.
+                        </p>
                     </div>
                 </div>
             </div>
